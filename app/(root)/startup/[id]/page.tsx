@@ -8,11 +8,11 @@ import { notFound } from "next/navigation";
 import { formatDate } from "@/lib/utils";
 import Link from "next/link";
 import Image from "next/image";
+
 import markdownit from "markdown-it";
 import { Skeleton } from "@/components/ui/skeleton";
 import View from "@/components/View";
 import StartupCard, { StartupTypeCard } from "@/components/StartupCard";
-
 
 const md = markdownit();
 
@@ -27,10 +27,10 @@ const Page = async ({ params }: { params: Promise<{ id: string }> }) => {
       slug: "editor-picks-new",
     }),
   ]);
+  
 
   if (!post) return notFound();
-  
-  
+
   const parsedContent = md.render(post?.pitch || "");
 
   return (
@@ -86,7 +86,7 @@ const Page = async ({ params }: { params: Promise<{ id: string }> }) => {
         </div>
 
         <hr className="divider" />
-        
+
         {editorPosts?.length > 0 && (
           <div className="max-w-4xl mx-auto">
             <p className="text-30-semibold">Editor Picks</p>

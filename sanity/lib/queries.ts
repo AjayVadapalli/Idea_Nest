@@ -76,27 +76,34 @@ export const STARTUPS_BY_AUTHOR_QUERY =
   image,
 }`);
 
-export const PLAYLIST_BY_SLUG_QUERY =
-  defineQuery(`*[_type == "playlist" && slug.current == $slug][0]{
-  _id,
-  title,
-  slug,
-  select[]->{
+export const PLAYLIST_BY_SLUG_QUERY = defineQuery(`
+  *[
+    _type == "playlist" &&
+    slug.current == $slug &&
+    defined(title) &&
+    defined(slug.current) &&
+    defined(select[0])
+  ][0]{
     _id,
-    _createdAt,
     title,
     slug,
-    author->{
+    select[]->{
       _id,
-      name,
+      _createdAt,
+      title,
       slug,
+      author->{
+        _id,
+        name,
+        slug,
+        image,
+        bio
+      },
+      views,
+      description,
+      category,
       image,
-      bio
-    },
-    views,
-    description,
-    category,
-    image,
-    pitch
+      pitch
+    }
   }
-}`);
+`);

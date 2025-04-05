@@ -15,6 +15,7 @@ export const playlist = defineType({
       options: {
         source: "title",
       },
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: "select",
