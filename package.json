@@ -28,7 +28,7 @@
     "lightningcss": "^1.29.3",
     "lucide-react": "^0.483.0",
     "markdown-it": "^14.1.0",
-    "next": "^15.2.3",
+    "next": "15.2.8",
     "next-auth": "^5.0.0-beta.25",
     "next-sanity": "^9.8.58-canary.0",
     "only": "^0.0.2",
