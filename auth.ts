@@ -5,7 +5,11 @@ import { client } from "@/sanity/lib/client";
 import { writeClient } from "@/sanity/lib/write-client";
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
-  providers: [GitHub],
+   providers: [
+    GitHub({
+      issuer: "https://github.com/login/oauth",
+    }),
+  ],
   callbacks: {
     async signIn({
       user: { name, email, image },
